@@ -17,6 +17,7 @@ function CreateData() {
   } = useForm();
 
   const onSubmit = (dataSubmit) => {
+    // set data vào store
     dispatch(
       createDataSlice.actions.createData1({
         name: dataSubmit.name,

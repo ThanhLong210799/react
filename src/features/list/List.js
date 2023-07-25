@@ -5,24 +5,24 @@ import { Table, Input, StyledInput, Ul} from "../../shared/styles";
 import {useState, useEffect} from "react";
 import axios from "axios";
 import { useForm } from "react-hook-form";
-import {urlApi} from "../common/common"
+import {urlApi, error, loading} from "../common/common"
 
 function List() {
   const { data, isLoading, isError } = useGetProductsQuery();
+  const [apiData, setApiData] = useState([]);
+  const [dataSearch, setDataSearch] = useState([]);
+  const [search, setSearch] = useState(false);
     useEffect(() => {
+      // lấy 1 lần list api ngoài
       axios.get(urlApi).then((response) => {
         setApiData(response.data);
       });
     }, []);
-  const [apiData, setApiData] = useState([]);
-  const [dataSearch, setDataSearch] = useState([]);
-  const [search, setSearch] = useState(false);
   const navigate = useNavigate();
-  const {
-    register, handleSubmit,} = useForm();
+  const {register, handleSubmit} = useForm();
 
-  if (isError) return <div>An error has occurred</div>;
-  if (isLoading) return  <div>Loading...</div>;
+  if (isError) return <div>{error}</div>;
+  if (isLoading) return  <div>{loading}</div>;
   const handleCreateData = () => {
     navigate("/Create");
   };
@@ -32,10 +32,10 @@ function List() {
   };
 
   const handleSearch = (dataSubmit) => {
-    
     setSearch(true)
     const dataS = data.concat(apiData);
     if (dataSubmit.inputSearch !== ""){
+      // fillter list apiLocal và api ngoài
       const fillData = dataS.filter((item) => {
         return Object.values(item.name).join("").toLowerCase().includes(dataSubmit.inputSearch);
       })
@@ -48,7 +48,6 @@ function List() {
 
   return (
     <form onSubmit={handleSubmit(handleSearch)}>
-      {/* <Common/> */}
       <Table
         style={{
           margin: "auto",
@@ -90,6 +89,7 @@ function List() {
               />
             </td>
           </tr>
+          {/* check có data api thì hiển thị count record không thì hiển thị message */}
           {(((Object.keys(data).length > 0 || Object.keys(apiData).length > 0) && !search) || Object.keys(dataSearch).length > 0) ?
             <tr>
               <td>
@@ -97,6 +97,7 @@ function List() {
             </td>
           </tr> 
           : <tr><td colSpan={4}><Ul>{strings.screen.MessageSearch}</Ul></td></tr>}
+          {/* check có data api thì hiển thị header */}
           {(((Object.keys(data).length > 0 || Object.keys(apiData).length > 0) && !search) || Object.keys(dataSearch).length > 0) &&       
            < tr>
              <th>ID</th>
@@ -105,7 +106,8 @@ function List() {
              <th>{strings.screen.Price}</th>
            </tr>}
         </thead>
-        <tbody style={{height: "110px", overflow: "scroll"}}>
+        <tbody style={{height: "110px"}}>
+          {/* search = true thì hiển thị dataSearch, search = flase thì hiển thị data và  apiData*/}
           {search
           ? dataSearch.map((item) => (
             <tr

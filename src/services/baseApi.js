@@ -4,7 +4,8 @@ export const baseApi = createApi({
   reducerPath: "baseApi",
   //khai báo baseUrl
   baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:8080/" }),
-  tagTypes: ["User", "Product"],
+  // khai báo service
+  tagTypes: ["Product"],
   endpoints: () => ({}),
 });
 

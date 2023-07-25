@@ -2,7 +2,7 @@ import { createSelector } from "@reduxjs/toolkit";
 
 export const productSelector = (state) => state.product;
 
-//reselect
+//Chọn lại product đã lưa trong store
 export const productRemainingSelector = createSelector( 
   productSelector,
   (product) => {

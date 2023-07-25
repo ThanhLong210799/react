@@ -5,9 +5,10 @@ import { productRemainingSelector } from "../../redux/selectors";
 import { useCreateProductMutation } from "../../services/api";
 import { Button, Form, Label, Input } from "../../shared/styles";
 import { strings } from "../../localization/Localization";
+import {loading} from "../common/common";
 
 function Confirm() {
-  //   lấy ra các giá trị trong kho chung
+  //   lấy ra các giá trị trong store
   const product = useSelector(productRemainingSelector);
 
   const [createProduct, createProductResult] = useCreateProductMutation();
@@ -29,7 +30,7 @@ function Confirm() {
     navigate("/List");
   };
 
-  if (createProductResult.isLoading) return <div>Loading...</div>;
+  if (createProductResult.isLoading) return <div>{loading}</div>;
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>

@@ -6,15 +6,15 @@ import {
 import { useNavigate } from "react-router-dom";
 import { Button, Td, Th, Div, Table } from "../../shared/styles";
 import { strings } from "../../localization/Localization";
-// import Common from "../common/common";
+import {error, loading} from "../common/common";
 
 function DetailData() {
   let { id } = useParams();
   const { data, isLoading, isError } = useGetProductQuery(id);
   const [deleteProduct, deleteProductResult] = useDeleteProductMutation();
   const navigate = useNavigate();
-  if (isError) return <div>An error has occurred</div>;
-  if (isLoading) return <div>Loading...</div>;
+  if (isError) return <div>{error}</div>;
+  if (isLoading) return <div>{loading}</div>;
 
   const handleBack = () => {
     navigate("/List");
@@ -25,11 +25,10 @@ function DetailData() {
     handleBack();
   };
 
-  if (deleteProductResult.isLoading) return <div>Loading...</div>;
+  if (deleteProductResult.isLoading) return <div>{loading}</div>;
 
   return (
     <Div>
-      {/* <Common/> */}
       <Table
         style={{
           margin: "auto",

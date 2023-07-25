@@ -2,7 +2,7 @@ import { baseApi } from "./baseApi";
 
 export const userApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
-
+// khai báo query và mutation
     getProducts: builder.query({
       query: () => ({
         url: `product`,
@@ -41,4 +41,5 @@ export const userApi = baseApi.injectEndpoints({
   }),
 });
 
+// export các use ứng với các query và mutation
 export const { useGetProductsQuery, useGetProductQuery, useCreateProductMutation, useDeleteProductMutation} = userApi;

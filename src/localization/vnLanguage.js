@@ -1,0 +1,22 @@
+export const vnLanguage = {
+  NameUser: "Tên đăng nhập",
+  Password: "Mật khẩu",
+  Login: "Đăng Nhập",
+  MessageIsRequired: " chưa nhập",
+  MessageLenght: "Mật khẩu phải dài 6 ký tự",
+  MessageErrorLogin: "Sai tên đăng nhập hoặc mật khẩu",
+  ListProduct: "Danh sách sản phẩm",
+  Name: "Tên sản phẩm",
+  Origin: "Xuất sứ",
+  Price: "Giá",
+  CreateProduct: "Tạo mới",
+  NextPage: "Trang tiếp",
+  MessageErrorPrice: "Giá tiền hãy nhập số",
+  Back: "Trở về",
+  Delete: "Xóa",
+  MessageAlert: "Chưa nhập data. Quay về màn list",
+  Home: "Trang chủ",
+  Logout: "Đăng xuất",
+  Record: "Bản ghi",
+  MessageSearch: "0 có bản ghi theo điều kiện tiềm kiếm"
+};

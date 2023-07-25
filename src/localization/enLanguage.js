@@ -1,0 +1,22 @@
+export const enLanguage = {
+  NameUser: "UserName",
+  Password: "Password",
+  Login: "Login",
+  MessageIsRequired: " is required",
+  MessageLenght: "Password must be 6 characters long",
+  MessageErrorLogin: "Wrong username or password",
+  ListProduct: "List Product",
+  Name: "Name",
+  Origin: "Origin",
+  Price: "Price",
+  CreateProduct: "Create",
+  NextPage: "NextPage",
+  MessageErrorPrice: "Price please enter number",
+  Back: "Back",
+  Delete: "Delete",
+  MessageAlert: "No data entered. Back to the list screen",
+  Home: "Home",
+  Logout: "Logout",
+  Record: "Record",
+  MessageSearch: "0 has a record according to the search condition"
+};

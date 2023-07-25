@@ -1,24 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route } from "react-router-dom";
+import Login from "./features/authorization/Login";
+import List from "./features/list/List";
+import CreateData from "./features/create/createData";
+import DetailData from "./features/detail/Detail";
+import CreateData2 from "./features/create/createData2";
+import Confirm from "./features/create/confirmData";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      <Route path="/" element={<Login />}></Route>
+      <Route path="/List" element={<List />}></Route>
+      <Route path="/Create" element={<CreateData />}></Route>
+      <Route path="/Create2" element={<CreateData2 />}></Route>
+      <Route path="/Confirm" element={<Confirm />}></Route>
+      <Route path="/Detail/:id" element={<DetailData />}></Route>
+    </Routes>
   );
 }
 

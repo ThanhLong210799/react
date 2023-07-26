@@ -5,7 +5,7 @@ import { productRemainingSelector } from "../../redux/selectors";
 import { useCreateProductMutation } from "../../services/api";
 import { Button, Form, Label, Input } from "../../shared/styles";
 import { strings } from "../../localization/Localization";
-import {loading} from "../common/common";
+import { loading } from "../common/common";
 
 function Confirm() {
   //   lấy ra các giá trị trong store

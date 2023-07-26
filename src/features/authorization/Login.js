@@ -2,10 +2,18 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { strings } from "../../localization/Localization";
-import { Button, Form, Ul, Error, Label, Input, IMG } from "../../shared/styles";
+import {
+  Button,
+  Form,
+  Ul,
+  Error,
+  Label,
+  Input,
+  IMG,
+} from "../../shared/styles";
 import logo from "../../assets/Luvina.png";
 import axios from "axios";
-import {url, user} from "../common/common"
+import { url, user } from "../common/common";
 
 export default function Login() {
   const [error, setError] = useState("");
@@ -18,17 +26,21 @@ export default function Login() {
   } = useForm();
 
   const onSubmit = (dataSubmit) => {
-    axios.post( url + user ,null, {params:{name: dataSubmit.name, password: dataSubmit.password}}).then((response) => {
-      if (response.data) {
-        navigate("/List", { replace: true });
-      } else {
-        setError(strings.screen.MessageErrorLogin);
-      }
-    });
+    axios
+      .post(url + user, null, {
+        params: { name: dataSubmit.name, password: dataSubmit.password },
+      })
+      .then((response) => {
+        if (response.data) {
+          navigate("/List", { replace: true });
+        } else {
+          setError(strings.screen.MessageErrorLogin);
+        }
+      });
   };
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
-      <IMG src={logo} className="App-logo" alt="logo"/>
+      <IMG src={logo} className="App-logo" alt="logo" />
       {error !== "" && <Ul>{error}</Ul>}
       <Label htmlFor="name">{strings.screen.NameUser}</Label>
       <Input

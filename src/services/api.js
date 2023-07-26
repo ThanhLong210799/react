@@ -4,8 +4,8 @@ export const userApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
 // khai báo query và mutation
     getProducts: builder.query({
-      query: () => ({
-        url: `product`,
+      query: (data) => ({
+        url: `product?name=${data}`,
         method: "GET",
       }),
       providesTags: [{type: 'Product', id: 'LIST'}],
@@ -13,7 +13,7 @@ export const userApi = baseApi.injectEndpoints({
 
     getProduct: builder.query({
       query: (id) => ({
-        url: `product?id=${id}`,
+        url: `product/id?id=${id}`,
         method: "GET",
       }),
       providesTags: (id) => [{type: 'Product', id: id}],

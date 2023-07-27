@@ -1,5 +1,5 @@
 export const vnLanguage = {
-  NameUser: "Tên đăng nhập",
+  UserName: "Tên đăng nhập",
   Password: "Mật khẩu",
   Login: "Đăng Nhập",
   MessageIsRequired: " chưa nhập",

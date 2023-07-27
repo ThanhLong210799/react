@@ -1,9 +1,10 @@
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import createDataSlice from "./createDataSlice";
+import createSlice from "./Slice";
 import { Button, Form, Label, Input, Ul, Error } from "../../shared/styles";
 import { strings } from "../../localization/Localization";
+import InPutCreate, {PrintErrors} from "../common/common";
 
 function CreateData2() {
   const dispatch = useDispatch();
@@ -19,7 +20,7 @@ function CreateData2() {
   const onSubmit = (dataSubmit) => {
     // set data vào store
     dispatch(
-      createDataSlice.actions.createData2({
+      createSlice.actions.createData2({
         price: dataSubmit.price,
       })
     );
@@ -28,27 +29,8 @@ function CreateData2() {
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
-      <Label htmlFor="name">{strings.screen.Price}</Label>
-      <Input
-        type="text"
-        name="price"
-        id="price"
-        placeholder={strings.screen.Price}
-        {...register("price", { required: true, pattern: /^\d*(\.\d+)?$/ })}
-      />
-      {Object.keys(errors).length !== 0 && (
-        <Ul className="error-container">
-          {errors.price?.type === "required" && (
-            <Error>
-              {strings.screen.Price + strings.screen.MessageIsRequired}
-            </Error>
-          )}
-          {errors.price?.type === "pattern" && (
-            <Error>{strings.screen.MessageErrorPrice}</Error>
-          )}
-        </Ul>
-      )}
-
+      {InPutCreate("price", register, /^\d*(\.\d+)?$/ )}
+      {PrintErrors(errors)}
       <Button type="submit">{strings.screen.NextPage}</Button>
     </Form>
   );

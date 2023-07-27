@@ -1,5 +1,5 @@
 export const enLanguage = {
-  NameUser: "UserName",
+  UserName: "UserName",
   Password: "Password",
   Login: "Login",
   MessageIsRequired: " is required",

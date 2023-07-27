@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { setupListeners } from "@reduxjs/toolkit/dist/query";
-import createDataSlice from "../features/create/createDataSlice";
+import createDataSlice from "../features/create/Slice";
 import { baseApi } from "../services/baseApi";
 
 // add service vào store

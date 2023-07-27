@@ -5,7 +5,7 @@ import { productRemainingSelector } from "../../redux/selectors";
 import { useCreateProductMutation } from "../../services/api";
 import { Button, Form, Label, Input } from "../../shared/styles";
 import { strings } from "../../localization/Localization";
-import { loading } from "../common/common";
+import { loading, InPutConfirm } from "../common/common";
 
 function Confirm() {
   //   lấy ra các giá trị trong store
@@ -23,10 +23,16 @@ function Confirm() {
       dataSubmit.origin !== "" ||
       dataSubmit.price !== ""
     ) {
+      console.log("aaaaaaaa")
       createProduct(dataSubmit);
+      console.log("bbbbbbbb")
+      navigate("/List");
+      console.log("ccccccccccc")
     } else {
       alert(strings.screen.MessageAlert);
+      navigate("/List");
     }
+    // console.log("aaaaaaaa")
     navigate("/List");
   };
 
@@ -34,6 +40,9 @@ function Confirm() {
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
+      {/* {InPutConfirm("name", register, product)}
+      {InPutConfirm("origin", register, product)}
+      {InPutConfirm("price", register, product)} */}
       <Label htmlFor="name">{strings.screen.Name}</Label>
       <Input
         type="text"

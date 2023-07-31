@@ -5,10 +5,10 @@ import { productRemainingSelector } from "../../redux/selectors";
 import { useCreateProductMutation } from "../../services/api";
 import { Button, Form, Label, Input } from "../../shared/styles";
 import { strings } from "../../localization/Localization";
-import { loading, InPutConfirm } from "../common/common";
+import { loading, InPutConfirm } from "../common/Common";
 
 function Confirm() {
-  //   lấy ra các giá trị trong store
+  //   get the state in the store
   const product = useSelector(productRemainingSelector);
 
   const [createProduct, createProductResult] = useCreateProductMutation();
@@ -23,16 +23,10 @@ function Confirm() {
       dataSubmit.origin !== "" ||
       dataSubmit.price !== ""
     ) {
-      console.log("aaaaaaaa")
       createProduct(dataSubmit);
-      console.log("bbbbbbbb")
-      navigate("/List");
-      console.log("ccccccccccc")
     } else {
       alert(strings.screen.MessageAlert);
-      navigate("/List");
     }
-    // console.log("aaaaaaaa")
     navigate("/List");
   };
 
@@ -40,10 +34,10 @@ function Confirm() {
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
-      {/* {InPutConfirm("name", register, product)}
+      {InPutConfirm("name", register, product)}
       {InPutConfirm("origin", register, product)}
-      {InPutConfirm("price", register, product)} */}
-      <Label htmlFor="name">{strings.screen.Name}</Label>
+      {InPutConfirm("price", register, product)}
+      {/* <Label htmlFor="name">{strings.screen.Name}</Label>
       <Input
         type="text"
         name="name"
@@ -52,16 +46,16 @@ function Confirm() {
         readOnly
         {...register("name")}
       />
-      <Label htmlFor="name">{strings.screen.Origin}</Label>
+      <Label htmlFor="origin">{strings.screen.Origin}</Label>
       <Input
         type="text"
-        name="text"
+        name="origin"
         id="origin"
         value={product.origin}
         readOnly
         {...register("origin")}
       />
-      <label htmlFor="name">{strings.screen.Price}</label>
+      <label htmlFor="price">{strings.screen.Price}</label>
       <Input
         type="text"
         name="price"
@@ -69,7 +63,7 @@ function Confirm() {
         value={product.price}
         readOnly
         {...register("price")}
-      />
+      /> */}
 
       <Button type="submit">{strings.screen.CreateProduct}</Button>
     </Form>

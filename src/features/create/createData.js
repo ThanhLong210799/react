@@ -2,9 +2,9 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import createSlice from "./Slice";
-import { Button, Form, Ul, Error, Label, Input } from "../../shared/styles";
+import { Button, Form } from "../../shared/styles";
 import { strings } from "../../localization/Localization";
-import InPutCreate, {PrintErrors} from "../common/common";
+import InPutCreate, { PrintErrors } from "../common/Common";
 
 function CreateData() {
   const dispatch = useDispatch();
@@ -18,7 +18,7 @@ function CreateData() {
   } = useForm();
 
   const onSubmit = (dataSubmit) => {
-    // set data vào store
+    // set data to store
     dispatch(
       createSlice.actions.createData1({
         name: dataSubmit.name,
@@ -30,8 +30,8 @@ function CreateData() {
 
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
-      {InPutCreate("name", register, "" )}
-      {InPutCreate("origin", register, "" )}
+      {InPutCreate("name", register, "")}
+      {InPutCreate("origin", register, "")}
       {PrintErrors(errors)}
       <Button type="submit">{strings.screen.NextPage}</Button>
     </Form>

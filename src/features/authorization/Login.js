@@ -6,15 +6,12 @@ import {
   Button,
   Form,
   Ul,
-  Error,
-  Label,
-  Input,
   IMG,
 } from "../../shared/styles";
 import logo from "../../assets/Luvina.png";
 import axios from "axios";
-import { url, user } from "../common/common";
-import InPutCreate, {PrintErrors} from "../common/common";
+import { url, user } from "../common/Common";
+import InPutCreate, {PrintErrors} from "../common/Common";
 
 export default function Login() {
   const [error, setError] = useState("");

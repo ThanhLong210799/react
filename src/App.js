@@ -1,10 +1,10 @@
 import { Routes, Route } from "react-router-dom";
 import Login from "./features/authorization/Login";
 import List from "./features/list/List";
-import CreateData from "./features/create/createData";
+import CreateData from "./features/create/CreateData";
 import DetailData from "./features/detail/Detail";
-import CreateData2 from "./features/create/createData2";
-import Confirm from "./features/create/confirmData";
+import CreateData2 from "./features/create/CreateData2";
+import Confirm from "./features/create/ConfirmData";
 
 function App() {
   return (
